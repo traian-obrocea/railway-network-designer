@@ -1,0 +1,4 @@
+oracledb~=1.4.2
+python-dotenv~=1.0.0
+attrs~=23.1.0
+Flask[async]~=3.0.0

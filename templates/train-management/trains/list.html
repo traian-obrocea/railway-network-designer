@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'common/head.html' %}
+    {% include 'common/list_table_style.html' %}
+    <title>{{ train_template.model }} - Trains</title>
+</head>
+<body>
+{% include 'common/page_header.html' %}
+
+
+<table>
+    <thead>
+    <tr><td colspan="5"><a class="generic-button" type="button" href="new">+ New Train</a></td></tr>
+    <tr>
+        <th>Frame</th>
+        <th>Operator</th>
+        <th>Service type</th>
+        <th>Line</th>
+        <th>Number</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for train in trains %}
+        <tr>
+            <td><a href="modify/{{ train.id }}">{{ train.frame }}</a></td>
+            <td><a href="/operators/modify/{{ train.operator.id }}">{{ train.operator.name }}</a></td>
+            <td>{{ train.service_type.name_english ~ '/' ~ train.service_type.name_native }}</td>
+            <td><a href="/lines/modify/{{ train.line.id }}">{{ train.line.name }}</a></td>
+            <td>{{ train.train_number }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>

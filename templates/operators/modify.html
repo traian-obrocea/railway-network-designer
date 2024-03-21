@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'common/head.html' %}
+    <title>Modify Operator {{ operator.name.english }}</title>
+    {% include 'common/modify_table_style.html' %}
+    {% from 'common/error_box.jinja' import error_box %}
+</head>
+<body>
+{% include 'common/page_header.html' %}
+<h2>Edit Operator Details</h2>
+
+{% if error_messages %}
+    {{ error_box(error_messages) }}
+{% endif %}
+
+<form method="post">
+    <table>
+        <thead>
+        <tr>
+            <th>Field</th>
+            <th>Value</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><label for="name_english">Name (English)</label></td>
+            <td>
+                <input type="text" maxlength="255" id="name_english" name="name_english"
+                       value="{{ operator.name.english }}" required>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="name_native">Name (Native)</label></td>
+            <td>
+                <input type="text" maxlength="255" id="name_native" name="name_native"
+                       value="{{ operator.name.native }}" required>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="default_base_fare">Default Base Fare</label></td>
+            <td>
+                <input type="number" id="default_base_fare" name="default_base_fare" min="0"
+                       value="{{ operator.default_base_fare }}" required>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="default_fare_per_km">Default Fare/km</label></td>
+            <td>
+                <input type="number" id="default_fare_per_km" name="default_fare_per_km" min="0"
+                       value="{{ operator.default_fare_per_km }}"
+                       required>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input class="generic-button" type="submit" value="Submit Changes">
+                <a class="generic-button" type="button" href="/operators">Cancel</a>
+                <button class="generic-button" type="button" onclick="showDeleteConfirmation()">Delete</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+
+<script>
+    function showDeleteConfirmation() {
+        if (confirm("Are you sure you want to delete this operator?")) {
+            fetch(
+                '/operators/delete/{{ operator.id }}',
+                {
+                    method: 'DELETE'
+                }
+            ).then(
+                response => {
+                    if (response.ok) {
+                        window.location.href = '/operators';
+                    } else {
+                        alert('Failed to delete operator');
+                    }
+                }
+            ).catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    }
+</script>
+
+</body>
+</html>

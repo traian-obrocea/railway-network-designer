@@ -1,0 +1,6 @@
+[tool.mypy]
+exclude = ['venv']
+
+[tool.ruff]
+line-length = 120
+

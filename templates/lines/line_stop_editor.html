@@ -1,0 +1,42 @@
+<script>
+    function createModal(title, content) {
+        return $("<div>").html(content).dialog({
+            autoOpen: false,
+            modal: true,
+            draggable: true,
+            resizable: false,
+            title: title,
+            width: 500,
+            height: 600,
+            close: function () {
+                const $form = $(this).find('form')
+                const formData = $form.serialize()
+                $.ajax({
+                    type: $form.attr('method'),
+                    url: $form.attr('action'),
+                    data: formData,
+                    success: function (response) {
+                        // successful
+                    },
+                    error: function (response) {
+                        alert("Error: " + response.responseText);
+                    }
+                });
+                $(this).dialog("destroy").remove();
+            }
+        }).resizable({
+            handles: 'n, s',
+            minHeight: 200
+        });
+    }
+</script>
+<style>
+    body > div.ui-widget-overlay {
+        opacity: 0.5
+    }
+
+    .ui-dialog .ui-dialog-title {
+        white-space: initial;
+        word-break: keep-all;
+    }
+</style>

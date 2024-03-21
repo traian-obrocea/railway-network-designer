@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'common/head.html' %}
+    <title>Lines</title>
+    {% include 'common/list_table_style.html' %}
+</head>
+<body>
+{% include 'common/page_header.html' %}
+
+<table>
+    <thead>
+    <tr>
+        <td colspan="9">
+            <a class="generic-button" type="button" href="new">+ New Line</a>
+        </td>
+    </tr>
+    <tr> {% for display, sort_name in [
+        ("Name (English)", "name_english"),
+        ("Name (Native)", "name_native"),
+        ("Operator", "operator"),
+        ("Prefix", "prefix"),
+        ("Color", "color"),
+        ("Loop?", "is_loop"),
+        ("base_fare", "base_fare"),
+        ("fare_per_km", "fare_per_km"),
+        ("stations", "stations"),
+    ] %}
+        <th><a href="?sort={{ sort_name }}">{{ display }}</a></th>
+    {% endfor %}
+    </tr>
+    </thead>
+    <tbody>
+    {% for line in lines %}
+        <tr>
+            <td><a href="modify/{{ line.id }}">{{ line.name.english }}</a></td>
+            <td>{{ line.name.native }}</td>
+            <td>{{ line.operator.name.english }}</td>
+            <td>{{ line.prefix }}</td>
+            <td>
+                <div style="width: 40px; height: 20px; background-color: rgb({{ line.color.r }}, {{ line.color.g }}, {{ line.color.b }});"></div>
+            </td>
+            <td>
+                <p style="text-align: center;">{{ "✅" if line.is_loop else "❌" }}</p>
+            </td>
+            <td {% if line.base_fare is not none %}
+                style="font-weight: bold" {% endif %}>{{ line.base_fare if line.base_fare is not none else line.operator.default_base_fare }}</td>
+            <td {% if line.fare_per_km is not none %}
+                style="font-weight: bold" {% endif %}>{{ line.fare_per_km if line.fare_per_km is not none else line.operator.default_fare_per_km }}</td>
+            <td>{{ len(line.stations) }}</td>
+        </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+</body>
+</html>

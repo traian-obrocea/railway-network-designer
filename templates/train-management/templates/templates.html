@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'common/head.html' %}
+    {% from 'train-management/macro.jinja' import template_graphic %}
+    <title>Train Template Management</title>
+    <style>
+        .car-container {
+            width: 20%;
+        }
+
+        .car {
+            width: 100%;
+        }
+
+        .train-title {
+            font-size: 2em;
+            font-weight: bold;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+{% include 'common/page_header.html' %}
+
+<div>
+    <a class="generic-button"
+       style="padding: 10px; margin: 20px; text-align: center; text-decoration: underline; font-weight: 700; width: unset"
+       href="/train-management/templates/new">New train template</a>
+    <a class="generic-button"
+       style="padding: 10px; margin: 20px; text-align: center; text-decoration: underline; font-weight: 700; width: unset"
+       href="/train-management/trains/new">New train</a>
+
+</div>
+{% for train_template in train_templates %}
+    <div style="text-align: center; border: 2px black solid; padding: 5px; background-color: #FFF1E6; margin-top: 10px">
+        <a class="train-title" href="templates/modify/{{ train_template.id }}">{{ train_template.model }}</a>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center ; margin-top: 20px">
+            {{ template_graphic(train_template) }}
+        </div>
+    </div>
+
+{% endfor %}
+
+
+</body>
+</html>

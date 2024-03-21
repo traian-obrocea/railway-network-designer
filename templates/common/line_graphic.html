@@ -1,0 +1,104 @@
+{% macro genStopEditTable(line, station, stops_configured, service_types_grouped_by_operator) %}
+    <form method="post" action="/stops/{{ line.id }}/{{ station.id }}">
+        {% for operator, service_types in service_types_grouped_by_operator.items() %}
+            <h4>{{ operator[0] }}/{{ operator[1] }}</h4>
+            <table style="width: 450px">
+                <thead>
+                <tr>
+                    <th style="text-align: right">Type</th>
+                    <th>Stops here</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for service_type in service_types %}
+                    <tr>
+                        <td style="text-align: right">{{ service_type.name_english }}</td>
+                        <td style="text-align: left">
+                            {% set aa = stops_configured %}
+                            {% set bb = service_type %}
+                            <input type="checkbox" value="{{ service_type.id }}" name="service_types[]"
+                                   style="transform: scale(2)" {{ "checked" if service_type.id in stops_configured }}>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endfor %}
+    </form>
+{% endmacro %}
+
+{% macro line_graphic(line, color, stops_configured_per_station, service_types_grouped_by_operator) %}
+    <div style="text-align: center;">
+        <svg width="90%" height="160" xmlns="http://www.w3.org/2000/svg" style="overflow: visible; margin: 10px">
+            {% if line.is_loop %}
+                {# Draw the curved bend connecting the vertical line and the horizontal line at the start #}
+                <path d="M -20 75 Q -20 50, 0 50" style="stroke:{{ color }};stroke-width:5;fill:none;"></path>
+
+                {# Draw the vertical section before the start #}
+                <line x1="-20" y1="75" x2="-20" y2="120"
+                      style="stroke:{{ color }};stroke-width:5; stroke-dasharray: 5, 5"></line>
+            {% endif %}
+            {# Draw the railway line #}
+            <line x1="0" y1="50" x2="100%" y2="50" style="stroke:{{ color }};stroke-width:5"></line>
+
+            {# Draw stations along the line #}
+            {% set stations = line.stations %}
+            {% set num_stations = stations|length %}
+            {% set station_spacing = 100 / [(num_stations - 1), 1]|max %}
+
+            {% for station in stations %}
+                {% set x_coordinate = loop.index0 * station_spacing %}
+                {% set y_dot = 55 %}
+
+                {% if loop.index0 is even %}
+                    {% set level = (loop.index0 // 2) % 2 %}
+                    {% set y_text_english = 85 + level * 30 %}
+                    {% set y_text_native = y_text_english + 15 %}
+                    {% set offset = -15 if level == 1 else -15 %}
+                {% else %}
+                    {% set level = ((loop.index0 - 1) // 2) % 2 %}
+                    {% set y_text_english = 25 - level * 30 %}
+                    {% set y_text_native = y_text_english - 15 %}
+                    {% set offset = 5 if level == 1 else 5 %}
+                {% endif %}
+                {% set emoji = '🚉' if not station.is_depot else '🏠' %}
+
+                {# Draw a line from the dot to the English name #}
+                <line x1="{{ x_coordinate }}%" y1="{{ y_dot }}" x2="{{ x_coordinate }}%"
+                      y2="{{ y_text_english + offset }}"
+                      style="stroke:black;stroke-width:3;stroke-linecap: round"></line>
+
+                {# Draw the dot #}
+                <text x="{{ x_coordinate }}%" y="{{ y_dot }}" font-size="22"
+                      text-anchor="middle">
+                    {{ emoji }}
+                </text>
+
+                {# Draw the English name #}
+                <a class="line-{{ line.id }}-station-{{ station.id }}" href="#">
+                    <text x="{{ x_coordinate }}%" y="{{ y_text_english }}" font-size="14"
+                          text-anchor="{% if loop.index0 == 0 %}start{% elif loop.index0 == num_stations - 1 %}end{% else %}middle{% endif %}">
+                        {{ station.name.english }}
+                    </text>
+                </a>
+
+                <script>
+                    $(".line-{{ line.id }}-station-{{ station.id }}").on("click", () => {
+                        {% set modalContent = genStopEditTable(line, station,  stops_configured_per_station[station.id],service_types_grouped_by_operator) %}
+                        const modalContent = {{modalContent|tojson}};
+                        const modalTitle = `Editing stops at {{ station.name.english }}/{{ station.name.native }} along {{ line.name.english }}/{{ line.name.native }}`;
+                        const modal = createModal(modalTitle, modalContent);
+                        modal.dialog("open");
+                    });
+                </script>
+
+
+                {# Draw the Native name #}
+                <text x="{{ x_coordinate }}%" y="{{ y_text_native }}" font-size="14"
+                      text-anchor="{% if loop.index0 == 0 %}start{% elif loop.index0 == num_stations - 1 %}end{% else %}middle{% endif %}">
+                    {{ station.name.native }}
+                </text>
+            {% endfor %}
+        </svg>
+    </div>
+{% endmacro %}

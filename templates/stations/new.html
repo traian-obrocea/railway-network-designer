@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'common/head.html' %}
+    <title>Stations</title>
+    {% include 'common/modify_table_style.html' %}
+    {% from 'common/error_box.jinja' import error_box %}
+</head>
+<body>
+{% include 'common/page_header.html' %}
+<h2>Add new station</h2>
+
+{% if error_messages %}
+    {{ error_box(error_messages) }}
+{% endif %}
+
+<form method="post">
+    <table>
+        <thead>
+        <tr>
+            <th>Field</th>
+            <th>Value</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for display, ident, type, other in [
+            ('Name (English)', 'name_english', 'text', ''),
+            ('Name (Native)', 'name_native', 'text', ''),
+            ('Latitude', 'latitude', 'number', 'step=any min=-90 max=90'),
+            ('Longitude', 'longitude' ,'number', 'step=any min=-180 max=180'),
+            ('Is depot?', 'depot', 'checkbox', 'not-required'),
+        ] %}
+            <tr>
+                <td>
+                    {{ display }}
+                </td>
+                <td>
+                    <input type="{{ type }}" id="{{ ident }}" name="{{ ident }}" {{ other }}
+                           {% if other != 'not-required' %}required{% endif %}/>
+                </td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <td>
+                <input class="generic-button" type="submit" value="Submit Changes">
+            </td>
+            <td>
+                <a class="generic-button" type="button" href="..">Cancel</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>

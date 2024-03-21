@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'common/head.html' %}
+    <title>Service Types</title>
+    {% include 'common/list_table_style.html' %}
+    <style>
+        .table-title {
+            text-align: center;
+            font-size: 175%;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+{% include 'common/page_header.html' %}
+<h2>
+    Train service types by operator
+</h2>
+{% for names, types in type_groups.items() %}
+    <h3 class="table-title" id="{{ names[0] }}">{{ names[0] }}/{{ names[1] }}</h3>
+    <table style="width: auto; max-width: 50%">
+        <thead>
+        <tr>
+            <td colspan="3">
+                <a class="generic-button" type="button"
+                   href="/service-types/new?operator={{ names[2] }}">+ New Service Type</a>
+            </td>
+        </tr>
+        <tr>
+            <th>Type (English)</th>
+            <th>Type (Native)</th>
+            <th/>
+        </tr>
+        </thead>
+        <tbody>
+        {% for service_type in types %}
+            <tr>
+                <td>
+                    {{ service_type.name_english }}
+                </td>
+                <td>
+                    {{ service_type.name_native }}
+                </td>
+                <td style="width: 50%">
+                    <button class="generic-button" type="button"
+                            onclick="showDeleteConfirmation({{ service_type.id }})">🗑️ Delete
+                    </button>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br/>
+{% endfor %}
+
+<script>
+    function showDeleteConfirmation(id) {
+        if (confirm("Are you sure you want to delete this service type?")) {
+            fetch(
+                '/service-types/delete/' + id,
+                {
+                    method: 'DELETE'
+                }
+            ).then(
+                response => {
+                    if (response.ok) {
+                        window.location.href = '/service-types/';
+                    } else {
+                        response.text().then(
+                            text => alert(text)
+                        )
+                    }
+                }
+            ).catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    }
+</script>
+
+</body>
+
+
+</html>

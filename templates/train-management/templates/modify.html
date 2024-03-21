@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'common/head.html' %}
+    {% from 'train-management/macro.jinja' import template_graphic %}
+    {% include 'common/modify_table_style.html' %}
+    {% from 'common/error_box.jinja' import error_box %}
+    <title>{{ train_template.model }} - Train Template Management </title>
+    <style>
+        .car-container {
+            width: 33.33%;
+            position: relative;
+            display: inline-block;
+        }
+
+        .car-overlay-index {
+            margin: auto;
+            font-size: 2em;
+        }
+
+        .car-form {
+            margin: 10px;
+        }
+
+        .car {
+            width: 100%
+        }
+
+        .train-title {
+            font-size: 2em;
+            font-weight: bold;
+            color: black;
+        }
+    </style>
+    <script>
+        function saveAll() {
+            const fetchPromises = [];
+
+            Array.from(document.getElementsByClassName("car-form")).forEach(
+                function (form) {
+                    let formData = new FormData(form);
+                    fetchPromises.push(
+                        fetch(form.action, {
+                            method: 'POST',
+                            body: formData
+                        }).then(
+                            (response) => {
+                                if (!response.ok) {
+                                    throw new Error("Failed to save some data");
+                                }
+                            }
+                        ).catch(() => alert("Failed to save some data"))
+                    );
+                }
+            );
+
+            Promise.all(fetchPromises)
+                .then(() => {
+                    window.location.reload();
+                });
+        }
+
+        function showDeleteConfirmation() {
+            if (confirm("Are you sure you want to delete this train type?\nThis will DELETE all trains of this type.")) {
+                fetch(
+                    '/train-management/templates/delete/{{ train_template.id }}',
+                    {
+                        method: 'DELETE'
+                    }
+                ).then(
+                    response => {
+                        if (response.ok) {
+                            window.location.href = '/train-management/templates';
+                        } else {
+                            response.text().then(text => alert(text));
+                        }
+                    }
+                ).catch(error => {
+                    console.error('Error:', error);
+                });
+            }
+        }
+    </script>
+</head>
+<body>
+{% include 'common/page_header.html' %}
+<a class="generic-button" type="button" href="../../trains/{{ train_template.id }}"
+   style="width: 50%; text-align: center; margin: auto auto 10px; font-weight: 700;">View trains of this type</a>
+
+<button class="generic-button" type="button"
+        style="width: 50%; text-align: center; margin: auto auto 10px; font-weight: 700;"
+        onclick="showDeleteConfirmation()">Delete this train type
+</button>
+
+<div style="text-align: center; border: 2px black solid; padding: 5px; background-color: #FFF1E6">
+    <h2 class="train-title">{{ train_template.model }}</h2>
+    <div>
+        {% if error_messages %}
+            {{ error_box(error_messages) }}
+        {% endif %}
+        <form method="POST">
+            <table>
+                <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Value</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><label for="model-input">Model</label></td>
+                    <td><input id="model-input" type="text" name="model" maxlength="255" required
+                               value="{{ train_template.model }}"></td>
+                </tr>
+                <tr>
+                    <td><label for="top-speed-input">Top speed (Km/h)</label></td>
+                    <td><input id="top-speed-input" type="number" name="top_speed" step="any" min="0" required
+                               value="{{ train_template.top_speed }}"></td>
+                </tr>
+                <tr>
+                    <td><label for="track-gauge-input">Track gauge (mm)</label></td>
+                    <td><input id="track-gauge-input" type="number" name="track_gauge" step="any" min="0" required
+                               value="{{ train_template.track_gauge }}"></td>
+                </tr>
+                <tr>
+                    <td><label for="electrification-input">Electrification (volts)</label></td>
+                    <td><input id="electrification-input" type="number" name="electrification" step="any" min="0"
+                               required value="{{ train_template.electrification }}"></td>
+                </tr>
+                <tr>
+                    <td><label for="max-acceleration-input">Max acceleration (m/s^2)</label></td>
+                    <td><input id="max-acceleration-input" type="number" name="max_acceleration" step="any" min="0"
+                               required value="{{ train_template.max_acceleration }}"></td>
+                </tr>
+                <tr>
+                    <td><label for="max-deceleration-input">Max deceleration (m/s^2)</label></td>
+                    <td><input id="max-deceleration-input" type="number" name="max_deceleration" step="any" min="0"
+                               required value="{{ train_template.max_deceleration }}"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input class="generic-button" type="submit" value="Submit Changes">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+    </div>
+    <br>
+    <div style="text-align: center">
+        <button class="generic-button" onclick="saveAll()">Save All</button>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center ; margin-top: 20px">
+        {{ template_graphic(train_template, "true") }}
+    </div>
+</div>
+</body>
+</html>

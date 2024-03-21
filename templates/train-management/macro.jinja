@@ -1,0 +1,96 @@
+{% macro template_graphic(template, extra_info="false") %}
+    {% for car in template.cars %}
+        {% if loop.first %}
+            {% set graphic = "car-end" %}
+            {% set orientation = "normal" %}
+        {% elif loop.last %}
+            {% set graphic = "car-end" %}
+            {% set orientation = "reverse" %}
+        {% else %}
+            {% set graphic = "car" %}
+            {% set orientation = "normal" %}
+        {% endif %}
+        {% if car.pantograph %}
+            {% set graphic = graphic ~ "-pantograph" %}
+        {% endif %}
+
+        <div class="car-container">
+            <img
+                    class="car"
+                    src="{{ url_for('static', filename='assets/' ~ graphic ~ '.svg') }}"
+                    style="{% if orientation == "reverse" %}transform: scaleX(-1);{% endif %}"
+                    alt="">
+            {% if extra_info == "true" %}
+                {#                <div class="car-overlay">#}
+                {#                    <strong class="car-overlay-index">{{ loop.index }}</strong>#}
+                {#                    {% if car.mildly_air_conditioned %}#}
+                {#                        <strong class="car-overlay-feature">- Low AC</strong>#}
+                {#                    {% endif %}#}
+                {#                    {% if car.toilet %}#}
+                {#                        <strong class="car-overlay-feature">- 🚽</strong>#}
+                {#                    {% endif %}#}
+                {#                    {% if car.luxury_car %}#}
+                {#                        <strong class="car-overlay-feature">- Luxury</strong>#}
+                {#                    {% endif %}#}
+                {#                    {% if car.pantograph %}#}
+                {#                        <strong class="car-overlay-feature">- Pantograph</strong>#}
+                {#                    {% endif %}#}
+                {#                </div>#}
+
+                <form class="car-form" id="car-form-{{ car.id }}" action="{{ template.id }}/{{ car.id }}"
+                      method="POST">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Pax Cap.</th>
+                            <th>Low AC</th>
+                            <th>Toilet</th>
+                            <th>Luxury car</th>
+                            <th>Pantograph</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><strong class="car-overlay-index">{{ loop.index }}</strong></td>
+                            <td>
+                                <input
+                                    type="number"
+                                    name="pax_capacity"
+                                    value="{{ car.pax_capacity }}"
+                                    style="width: 8ch" {# account for arrows on field #}
+                                    min="0">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="mildly_air_conditioned" value="mildly_air_conditioned"
+                                       {% if car.mildly_air_conditioned %}checked{% endif %}>
+                            </td>
+                            <td>
+                                <input type="checkbox" name="toilet" value="toilet"
+                                       {% if car.toilet %}checked{% endif %}>
+                            </td>
+                            <td>
+                                <input type="checkbox" name="luxury_car" value="luxury_car"
+                                       {% if car.luxury_car %}checked{% endif %}>
+                            </td>
+                            <td>
+                                <input type="checkbox" name="pantograph" value="pantograph"
+                                       {% if car.mildly_air_conditioned %}checked{% endif %}>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="6">
+                                <button class="generic-button" type="submit">Save</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+
+            {% endif %}
+
+        </div>
+    {% endfor %}
+
+
+{% endmacro %}

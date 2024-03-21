@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'common/head.html' %}
+    <title>New train</title>
+    {% include 'common/modify_table_style.html' %}
+    <link href="{{ url_for('static', filename='css/select2.css') }}" rel="stylesheet"/>
+    <link href="{{ url_for('static', filename='css/jquery-ui.css') }}" rel="stylesheet"/>
+    <link href="{{ url_for('static', filename='css/jquery-ui.structure.css') }}" rel="stylesheet"/>
+    <link href="{{ url_for('static', filename='css/jquery-ui.theme.css') }}" rel="stylesheet"/>
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery-ui.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/select2.js') }}"></script>
+    <style>
+        .select2 {
+            width: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+{% include 'common/page_header.html' %}
+<h2>New train</h2>
+
+<form method="post">
+    <table>
+        <thead>
+        <tr>
+            <th>Field</th>
+            <th>Value</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><label for="template_input">Type</label></td>
+            <td><select id="template_input" name="template" required>
+                {% for train_template in train_templates %}
+                    <option value="{{ train_template.id }}">
+                        {{ train_template.model }} - {{ train_template.cars|length ~ ' cars' }}
+                    </option>
+                {% endfor %}
+            </select></td>
+        </tr>
+        <tr>
+            <td><label for="frame_input">Frame</label></td>
+            <td><input id="frame_input" type="number" min="0" name="frame" required></td>
+        </tr>
+        <tr>
+            <td><label for="operator_input">Operator</label></td>
+            <td>
+                <select id="operator_input" name="operator" required>
+                    {% for operator in operators %}
+                        <option value="{{ operator.id }}">
+                            {{ operator.name.english }}/{{ operator.name.native }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="service_type_input">Service type</label></td>
+            <td><select id="service_type_input" name="service_type" required>
+                {% for service_type in service_types %}
+                    <option value="{{ service_type.id }}">
+                        {{ service_type.operator.name }}
+                        - {{ service_type.name_english }}/{{ service_type.name_native }}
+                    </option>
+                {% endfor %}
+            </select></td>
+        </tr>
+        <tr>
+            <td><label for="line_input">Line</label></td>
+            <td>
+                <select id="line_input" name="line" required>
+                    {% for line in lines %}
+                        <option value="{{ line.id }}">
+                            {{ line.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="train_number_input">Number</label></td>
+            <td><input id="train_number_input" type="text" name="train_number"></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input class="generic-button" type="submit" value="Save">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+
+<script>
+    $(function () {
+        $('#line_input').select2({
+            width: 'style',
+            placeholder: "Select line"
+        })
+    });
+</script>
+
+</body>
+</html>

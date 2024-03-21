@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'common/head.html' %}
+    <title>Operators</title>
+    {% include 'common/list_table_style.html' %}
+</head>
+<body>
+{% include 'common/page_header.html' %}
+
+<table>
+    <thead>
+    <tr>
+        <td colspan="4">
+            <a class="generic-button" type="button" href="new">+ New Operator</a>
+        </td>
+    </tr>
+    <tr>
+        <th><a href="?sort=name_english">Name (English)</a></th>
+        <th><a href="?sort=name_native">Name (Native)</a></th>
+        <th><a href="?sort=default_base_fare">Default Base Fare</a></th>
+        <th><a href="?sort=default_fare_per_km">Default Fare/Km</a></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for operator in operators %}
+        <tr>
+            <td><a href="modify/{{ operator.id }}">{{ operator.name.english }}</a></td>
+            <td>{{ operator.name.native }}</td>
+            <td>{{ operator.default_base_fare }}</td>
+            <td>{{ operator.default_fare_per_km }}</td>
+        </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+</body>
+</html>

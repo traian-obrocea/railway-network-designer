@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'common/head.html' %}
+    <title>Stations</title>
+    {% include 'common/list_table_style.html' %}
+</head>
+<body>
+{% include 'common/page_header.html' %}
+
+<table>
+    <thead>
+    <tr>
+        <td colspan="5">
+            <a class="generic-button" type="button" href="new">+ New Station</a>
+        </td>
+    </tr>
+    <tr>
+        <th><a href="?sort=name_english">Name (English)</a></th>
+        <th><a href="?sort=name_native">Name (Native)</a></th>
+        <th><a href="?sort=pos_lat">Latitude</a></th>
+        <th><a href="?sort=pos_lon">Longitude</a></th>
+        <th><a href="?sort=is_depot">Is depot?</a></th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {% for station in stations %}
+        <tr>
+            <td><a href="modify/{{ station.id }}">{{ station.name.english }}</a></td>
+            <td>{{ station.name.native }}</td>
+            <td>{{ station.latitude }}</td>
+            <td>{{ station.longitude }}</td>
+            <td>{{ station.is_depot }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

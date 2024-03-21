@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'common/head.html' %}
+    <title>Stations</title>
+    {% include 'common/modify_table_style.html' %}
+    {% from 'common/error_box.jinja' import error_box %}
+</head>
+<body>
+{% include 'common/page_header.html' %}
+<h2 style="text-align: center">Add new line</h2>
+
+{% if error_messages %}
+    {{ error_box(error_messages) }}
+{% endif %}
+
+<form method="post">
+    <table>
+        <thead>
+        <tr>
+            <th>Field</th>
+            <th>Value</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Name (English)</td>
+            <td>
+                <input type="text" name="name_english" required>
+            </td>
+        </tr>
+        <tr>
+            <td>Name (Native)</td>
+            <td><input type="text" name="name_native" required></td>
+        </tr>
+        <tr>
+            <td>Prefix</td>
+            <td><input type="text" name="prefix" maxlength="5" required></td>
+        </tr>
+        <tr>
+            <td>Operator</td>
+            <td>
+                <select name="operator" required>
+                    {% for operator in operators %}
+                        <option value="{{ operator.id }}">{{ operator.name.english }}/{{ operator.name.native }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Base fare (leave blank for operator default)</td>
+            <td><input type="number" name="base_fare"></td>
+        </tr>
+        <tr>
+            <td>Fare per km (leave blank for operator default)</td>
+            <td><input type="number" name="fare_per_km"></td>
+        </tr>
+        <tr>
+            <td>Color</td>
+            <td><input type="color" name="color" required></td>
+        </tr>
+        <tr>
+            <td>Stations</td>
+            <td>Edit after creation</td>
+        </tr>
+        <tr>
+            <td>
+                <input class="generic-button" type="submit" value="Submit Changes">
+            </td>
+            <td>
+                <a class="generic-button" type="button" href="/lines/">Cancel</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>

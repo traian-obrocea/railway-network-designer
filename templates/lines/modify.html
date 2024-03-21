@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'common/head.html' %}
+    <title>Edit {{ line.name.english }}</title>
+    {% include 'common/modify_table_style.html' %}
+
+    {% from "common/line_graphic.html" import line_graphic %}
+    {% from 'common/error_box.jinja' import error_box %}
+
+    <link href="{{ url_for('static', filename='css/select2.css') }}" rel="stylesheet"/>
+    <link href="{{ url_for('static', filename='css/jquery-ui.css') }}" rel="stylesheet"/>
+    <link href="{{ url_for('static', filename='css/jquery-ui.structure.css') }}" rel="stylesheet"/>
+    <link href="{{ url_for('static', filename='css/jquery-ui.theme.css') }}" rel="stylesheet"/>
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery-ui.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/select2.js') }}"></script>
+    {% include 'lines/line_stop_editor.html'  %}
+</head>
+<body>
+
+{% include 'common/page_header.html' %}
+<h2>Edit {{ line.name.english }}</h2>
+
+{% if error_messages %}
+    {{ error_box(error_messages) }}
+{% endif %}
+
+{{ line_graphic(line, color, stops_configured_per_station, service_types_grouped_by_operator) }}
+
+<form method="post">
+    <table>
+        <tbody>
+        <tr>
+            <td>Name (English)</td>
+            <td>
+                <input type="text" id="name_english" name="name_english" value="{{ line.name.english }}" required>
+            </td>
+        </tr>
+        <tr>
+            <td>Name (Native)</td>
+            <td>
+                <input type="text" id="name_native" name="name_native" value="{{ line.name.native }}" required>
+            </td>
+        </tr>
+        <tr>
+            <td>Prefix</td>
+            <td>
+                <input type="text" id="prefix" name="prefix" value="{{ line.prefix }}" maxlength="5" required>
+            </td>
+        </tr>
+        <tr>
+            <td>Operator</td>
+            <td>
+                <select id="operator-selector" name="operator" required>
+                    {% for operator in operators %}
+                        <option value="{{ operator.id }}"
+                                {% if operator.id == line.operator.id %}selected{% endif %}>
+                            {{ operator.name.english }}/{{ operator.name.native }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Base fare (default: {{ line.operator.default_base_fare }})</td>
+            <td>
+                <input type="number" id="base_fare" name="base_fare" value="{{ line.base_fare }}">
+            </td>
+        </tr>
+        <tr>
+            <td>Fare per km (default: {{ line.operator.default_fare_per_km }})</td>
+            <td>
+                <input type="number" id="fare_per_km" name="fare_per_km" value="{{ line.fare_per_km }}">
+            </td>
+        </tr>
+        <tr>
+            <td>Color</td>
+            <td>
+                <input type="color" id="color" name="color" value="{{ color }}" required>
+            </td>
+        </tr>
+        <tr>
+            <td>Is loop?</td>
+            <td>
+                <input type="checkbox" id="is_loop" name="is_loop" {% if line.is_loop %}checked{% endif %}></td>
+            </tr>
+        <tr>
+            <td>Stations</td>
+            <td>
+                <select id="stations-selector" name="stations[]" style="display: block" multiple required>
+                    {% for station in stations %}
+                        <option value="{{ station.id }}" {% if station in line.stations %}selected{% endif %}>
+                            {{ station.name.english }}/{{ station.name.native }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input class="generic-button" type="submit" value="Submit Changes">
+                <a class="generic-button" type="button" href="..">Cancel</a>
+                <button class="generic-button" type="button" onclick="showDeleteConfirmation()">Delete</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+</form>
+
+<script>
+    function showDeleteConfirmation() {
+        if (confirm("Are you sure you want to delete this line?")) {
+            fetch(
+                '/lines/delete/{{ line.id }}',
+                {
+                    method: 'DELETE'
+                }
+            ).then(
+                response => {
+                    if (response.ok) {
+                        window.location.href = '/lines';
+                    } else {
+                        alert('Failed to delete line');
+                    }
+                }
+            ).catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    }
+    $(function () {
+        let selectEl = $('#stations-selector').select2({
+            width: 'style',
+            placeholder: 'Select stations'
+        });
+
+        selectEl.on("select2:select", function (evt) {
+            const id = evt.params.data.id;
+            const element = $(this).children(`option[value="${id}"]`);
+
+            moveElementToEndOfParent(element);
+
+            $(this).trigger("change");
+        });
+
+        const ele = selectEl.parent().find("ul.select2-selection__rendered");
+        ele.sortable({
+            containment: 'parent',
+            update: function () {
+                orderSortedValues();
+                console.log(`${selectEl.val()}`)
+            }
+        });
+
+        const orderSortedValues = () => {
+
+            selectEl.parent().find("ul.select2-selection__rendered").children("li[title]").each(function (i, obj) {
+
+                var element = selectEl.children('option').filter(function () {
+                    return $(this).html() === obj.title
+                });
+                moveElementToEndOfParent(element)
+            });
+        };
+
+        const moveElementToEndOfParent = (element) => {
+            const parent = element.parent();
+
+            element.detach();
+
+            parent.append(element);
+        };
+    });
+
+</script>
+
+</body>
+</html>

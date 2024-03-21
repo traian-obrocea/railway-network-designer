@@ -1,0 +1,146 @@
+@startuml
+
+top to bottom direction
+skinparam ArrowThickness 2
+skinparam scale 2
+skinparam linetype ortho
+
+left to right direction
+
+together {
+    class LINE_NAME {
+       {field} ID: number <<generated PK>>
+       {field} ENGLISH: varchar2(255 char) <<UK>>
+       {field} NATIVE: nvarchar2(255) <<UK>>
+    }
+
+    class LINE {
+       {field} ID: number <<generated PK>>
+       {field} NAME_ID: number <<FK, UK>>
+       {field} OPERATOR_ID: number <<FK>>
+       {field} PREFIX: varchar2(5)
+       {field} COLOR: number
+       {field} IS_LOOP: number(1)
+       {field} BASE_FARE: number <<null>>
+       {field} FARE_PER_KM: number <<null>>
+    }
+
+    LINE ||--|| LINE_NAME : "LINE_ID:ID"
+
+    together {
+    class STATION_NAME {
+       {field} ID: number <<generated PK>>
+       {field} ENGLISH: varchar2(255 char) <<UK>>
+       {field} NATIVE: nvarchar2(255) <<UK>>
+    }
+
+    class STATION {
+       {field} ID: number <<generated PK>>
+       {field} NAME_ID: number <<FK, UK>>
+       {field} LATITUDE: float
+       {field} LONGITUDE: float
+       {field} IS_DEPOT: number(1)
+       {method} (LATITUDE, LONGITUDE) <<UK>>
+    }
+
+    STATION_NAME ||--|| "NAME_ID:ID" STATION
+}
+
+    together {
+    class STATIONS_ON_LINE {
+       {field} ID: number <<generated PK>>
+       {field} LINE_ID: number <<FK>>
+       {field} STATION_ID: number <<FK>>
+       {field} ORDINAL: number
+       {method} (LINE_ID, STATION_ID) <<UK>>
+    }
+
+    STATIONS_ON_LINE ||--o{ LINE : "LINE_ID:ID"
+    STATIONS_ON_LINE ||--o{ STATION : "STATION_ID:ID"
+
+    class STOP {
+       {field} ID: number <<generated PK>>
+       {field} STATION_ON_LINE_ID: number <<FK>>
+       {field} SERVICE_TYPE_ID: number <<FK>>
+       {method} (STATION_ON_LINE_ID, SERVICE_TYPE_ID) <<UK>>
+    }
+
+    STOP }o-|| STATIONS_ON_LINE : "STATION_ON_LINE_ID:ID"
+    STOP }o-|| SERVICE_TYPE : "SERVICE_TYPE_ID:ID"
+}
+}
+
+together {
+    class OPERATOR_NAME {
+       {field} ID: number <<generated PK>>
+       {field} ENGLISH: varchar2(255 char) <<UK>>
+       {field} NATIVE: nvarchar2(255) <<UK>>
+    }
+
+    class OPERATOR {
+       {field} ID: number <<generated PK>>
+       {field} NAME_ID: number <<FK, UK>>
+       {field} DEFAULT_BASE_FARE: number
+       {field} DEFAULT_FARE_PER_KM: number
+    }
+
+    OPERATOR ||--|| OPERATOR_NAME : "NAME_ID:ID"
+}
+
+    LINE }o-|| OPERATOR : "OPERATOR_ID:ID"
+
+class SERVICE_TYPE {
+   {field} ID: number <<generated PK>>
+   {field} NAME_ENGLISH: varchar2(255 char)
+   {field} NAME_NATIVE: nvarchar2(255)
+   {field} OPERATOR_ID: number <<FK>>
+   {method} (NAME_ENGLISH, NAME_NATIVE, OPERATOR_ID) <<UK>>
+}
+
+SERVICE_TYPE ||--o{ OPERATOR : "OPERATOR_ID:ID"
+
+
+
+
+together {
+    class TRAIN_CAR_TEMPLATE {
+       {field} ID: number <<generated PK>>
+       {field} TRAIN_TEMPLATE_ID: number <<FK>>
+       {field} POSITION: number
+       {field} PASSENGER_CAPACITY: number
+       {field} MILDLY_AIR_CONDITIONED: number(1)
+       {field} PANTOGRAPH: number(1)
+       {field} TOILET: number(1)
+       {field} LUXURY_CAR: number(1)
+       {method} (TRAIN_TEMPLATE_ID, POSITION) <<UK>>
+    }
+    class TRAIN_TEMPLATE {
+       {field} ID: number <<generated PK>>
+       {field} MODEL: varchar2(255) <<UK>>
+       {field} TOP_SPEED: number
+       {field} TRACK_GAUGE: number
+       {field} ELECTRIFICATION: number
+       {field} MAX_ACCELERATION: float(3)
+       {field} MAX_DECELERATION: float(3)
+    }
+
+    TRAIN_CAR_TEMPLATE ||--|{ "TRAIN_TEMPLATE_ID:ID" TRAIN_TEMPLATE
+
+    class TRAIN {
+       {field} ID: number <<generated PK>>
+       {field} FRAME: number
+       {field} TEMPLATE_ID: number <<FK>>
+       {field} OPERATOR_ID: number <<FK>>
+       {field} SERVICE_TYPE_ID: number <<FK>>
+       {field} LINE_ID: number <<FK>>
+       {field} TRAIN_NUMBER: varchar2(10)
+       {method} (TEMPLATE_ID, FRAME) <<UK>>
+    }
+
+    TRAIN }o-|| TRAIN_TEMPLATE : "TEMPLATE_ID:ID"
+    TRAIN::OPERATOR_ID }o-|| OPERATOR : "OPERATOR_ID:ID"
+    TRAIN "SERVICE_TYPE_ID:ID" }o-||  SERVICE_TYPE
+    TRAIN }o-|| LINE : "LINE_ID:ID"
+}
+
+@enduml
