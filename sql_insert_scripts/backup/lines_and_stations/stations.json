@@ -1,0 +1,772 @@
+[
+  {
+    "name_english": "Akihabara",
+    "name_native": "秋葉原",
+    "latitude": 35.69833,
+    "longitude": 139.77306,
+    "is_depot": false
+  },
+  {
+    "name_english": "Atami",
+    "name_native": "熱海",
+    "latitude": 35.10333,
+    "longitude": 139.07778,
+    "is_depot": false
+  },
+  {
+    "name_english": "Bubaigawara",
+    "name_native": "分倍河原",
+    "latitude": 35.6684,
+    "longitude": 139.4686,
+    "is_depot": false
+  },
+  {
+    "name_english": "Chitose-karasuyama",
+    "name_native": "千歳烏山",
+    "latitude": 35.6679,
+    "longitude": 139.6006,
+    "is_depot": false
+  },
+  {
+    "name_english": "Chōfu",
+    "name_native": "調布",
+    "latitude": 35.6521659,
+    "longitude": 139.5440376,
+    "is_depot": false
+  },
+  {
+    "name_english": "Daitabashi",
+    "name_native": "代田橋",
+    "latitude": 35.6712,
+    "longitude": 139.6597,
+    "is_depot": false
+  },
+  {
+    "name_english": "Ebisu",
+    "name_native": "恵比寿",
+    "latitude": 35.646643,
+    "longitude": 139.710045,
+    "is_depot": false
+  },
+  {
+    "name_english": "Fuchū",
+    "name_native": "府中",
+    "latitude": 35.672175,
+    "longitude": 139.480426,
+    "is_depot": false
+  },
+  {
+    "name_english": "Fuda",
+    "name_native": "布田",
+    "latitude": 35.64996694,
+    "longitude": 139.551139,
+    "is_depot": false
+  },
+  {
+    "name_english": "Gifu-Hashima",
+    "name_native": "岐阜羽島",
+    "latitude": 35.31583,
+    "longitude": 136.68556,
+    "is_depot": false
+  },
+  {
+    "name_english": "Gojō",
+    "name_native": "五条",
+    "latitude": 34.9951722,
+    "longitude": 135.7597389,
+    "is_depot": false
+  },
+  {
+    "name_english": "Gotanda",
+    "name_native": "五反田",
+    "latitude": 35.62645,
+    "longitude": 139.7234,
+    "is_depot": false
+  },
+  {
+    "name_english": "Hachimanyama",
+    "name_native": "八幡山",
+    "latitude": 35.6699,
+    "longitude": 139.6151,
+    "is_depot": false
+  },
+  {
+    "name_english": "Hamamatsu",
+    "name_native": "浜松",
+    "latitude": 34.70361,
+    "longitude": 137.73444,
+    "is_depot": false
+  },
+  {
+    "name_english": "Hamamatsuchō",
+    "name_native": "浜松町",
+    "latitude": 35.65523,
+    "longitude": 139.757627,
+    "is_depot": false
+  },
+  {
+    "name_english": "Harajuku",
+    "name_native": "原宿",
+    "latitude": 35.670162,
+    "longitude": 139.70269,
+    "is_depot": false
+  },
+  {
+    "name_english": "Higashi-fuchū",
+    "name_native": "東府中",
+    "latitude": 35.6689,
+    "longitude": 139.4953,
+    "is_depot": false
+  },
+  {
+    "name_english": "Hirayamajōshi-kōen",
+    "name_native": "平山城址公園",
+    "latitude": 35.6473,
+    "longitude": 139.3798,
+    "is_depot": false
+  },
+  {
+    "name_english": "Ikebukuro",
+    "name_native": "池袋",
+    "latitude": 35.73028,
+    "longitude": 139.71139,
+    "is_depot": false
+  },
+  {
+    "name_english": "Imadegawa",
+    "name_native": "今出川",
+    "latitude": 35.0301,
+    "longitude": 135.7593,
+    "is_depot": false
+  },
+  {
+    "name_english": "Inari",
+    "name_native": "稲荷",
+    "latitude": 34.966833,
+    "longitude": 135.77085,
+    "is_depot": false
+  },
+  {
+    "name_english": "JR Fujinomori",
+    "name_native": "JR藤森",
+    "latitude": 34.94833,
+    "longitude": 135.77583,
+    "is_depot": false
+  },
+  {
+    "name_english": "JR Ogura",
+    "name_native": "JR小倉",
+    "latitude": 34.88917,
+    "longitude": 135.78583,
+    "is_depot": false
+  },
+  {
+    "name_english": "Jujō",
+    "name_native": "十条",
+    "latitude": 34.97222,
+    "longitude": 135.75972,
+    "is_depot": false
+  },
+  {
+    "name_english": "Jōyō",
+    "name_native": "城陽",
+    "latitude": 34.8561,
+    "longitude": 135.7804,
+    "is_depot": false
+  },
+  {
+    "name_english": "Kakegawa",
+    "name_native": "掛川",
+    "latitude": 34.76972,
+    "longitude": 138.015,
+    "is_depot": false
+  },
+  {
+    "name_english": "Kami-Kitazawa",
+    "name_native": "上北沢",
+    "latitude": 35.6687,
+    "longitude": 139.6232,
+    "is_depot": false
+  },
+  {
+    "name_english": "Kamikoma",
+    "name_native": "上狛",
+    "latitude": 34.750489,
+    "longitude": 135.821083,
+    "is_depot": false
+  },
+  {
+    "name_english": "Kanda",
+    "name_native": "神田",
+    "latitude": 35.691731,
+    "longitude": 139.771264,
+    "is_depot": false
+  },
+  {
+    "name_english": "Karasuma Oike",
+    "name_native": "烏丸御池",
+    "latitude": 35.0104,
+    "longitude": 135.7598,
+    "is_depot": false
+  },
+  {
+    "name_english": "Keiō-hachiōji",
+    "name_native": "京王八王子",
+    "latitude": 35.6578803,
+    "longitude": 139.3431401,
+    "is_depot": false
+  },
+  {
+    "name_english": "Kitano",
+    "name_native": "北野",
+    "latitude": 35.644417,
+    "longitude": 139.354639,
+    "is_depot": false
+  },
+  {
+    "name_english": "Kitayama",
+    "name_native": "北山",
+    "latitude": 35.05139,
+    "longitude": 135.76639,
+    "is_depot": false
+  },
+  {
+    "name_english": "Kitaōji",
+    "name_native": "北大路",
+    "latitude": 35.0449,
+    "longitude": 135.7589,
+    "is_depot": false
+  },
+  {
+    "name_english": "Kizu",
+    "name_native": "木津",
+    "latitude": 34.735942,
+    "longitude": 135.824919,
+    "is_depot": false
+  },
+  {
+    "name_english": "Kohata",
+    "name_native": "木幡",
+    "latitude": 34.924938,
+    "longitude": 135.798856,
+    "is_depot": false
+  },
+  {
+    "name_english": "Kokuryō",
+    "name_native": "国領",
+    "latitude": 35.65065889,
+    "longitude": 139.55823194,
+    "is_depot": false
+  },
+  {
+    "name_english": "Kokusaikaikan",
+    "name_native": "国際会館",
+    "latitude": 35.0627,
+    "longitude": 135.7854,
+    "is_depot": false
+  },
+  {
+    "name_english": "Komagome",
+    "name_native": "駒込",
+    "latitude": 35.736289,
+    "longitude": 139.746995,
+    "is_depot": false
+  },
+  {
+    "name_english": "Kuinabashi",
+    "name_native": "くいな橋",
+    "latitude": 34.9627,
+    "longitude": 135.7574,
+    "is_depot": false
+  },
+  {
+    "name_english": "Kujō",
+    "name_native": "九条",
+    "latitude": 34.97917,
+    "longitude": 135.75972,
+    "is_depot": false
+  },
+  {
+    "name_english": "Kuramaguchi",
+    "name_native": "鞍馬口",
+    "latitude": 35.0376,
+    "longitude": 135.7594,
+    "is_depot": false
+  },
+  {
+    "name_english": "Kyōto",
+    "name_native": "京都",
+    "latitude": 34.98556,
+    "longitude": 135.75861,
+    "is_depot": false
+  },
+  {
+    "name_english": "Maibara",
+    "name_native": "米原",
+    "latitude": 35.3141806,
+    "longitude": 136.2904889,
+    "is_depot": false
+  },
+  {
+    "name_english": "Marutamachi",
+    "name_native": "丸太町",
+    "latitude": 35.0165,
+    "longitude": 135.7597,
+    "is_depot": false
+  },
+  {
+    "name_english": "Matsugasaki",
+    "name_native": "松ヶ崎",
+    "latitude": 35.05167,
+    "longitude": 135.77722,
+    "is_depot": false
+  },
+  {
+    "name_english": "Meguro",
+    "name_native": "目黒",
+    "latitude": 35.633983,
+    "longitude": 139.716,
+    "is_depot": false
+  },
+  {
+    "name_english": "Meidaimae",
+    "name_native": "明大前",
+    "latitude": 35.6683639,
+    "longitude": 139.6505028,
+    "is_depot": false
+  },
+  {
+    "name_english": "Mejiro",
+    "name_native": "目白",
+    "latitude": 35.720995,
+    "longitude": 139.70688,
+    "is_depot": false
+  },
+  {
+    "name_english": "Mikawa-Anjō",
+    "name_native": "三河安城",
+    "latitude": 34.968967,
+    "longitude": 137.060669,
+    "is_depot": false
+  },
+  {
+    "name_english": "Minamidaira",
+    "name_native": "南平",
+    "latitude": 35.6546,
+    "longitude": 139.392,
+    "is_depot": false
+  },
+  {
+    "name_english": "Mishima",
+    "name_native": "三島",
+    "latitude": 35.12722,
+    "longitude": 138.91056,
+    "is_depot": false
+  },
+  {
+    "name_english": "Mogusaen",
+    "name_native": "百草園",
+    "latitude": 35.6574,
+    "longitude": 139.4312,
+    "is_depot": false
+  },
+  {
+    "name_english": "Momoyama",
+    "name_native": "桃山",
+    "latitude": 34.9326167,
+    "longitude": 135.77111,
+    "is_depot": false
+  },
+  {
+    "name_english": "Musashinodai",
+    "name_native": "武蔵野台",
+    "latitude": 35.6642,
+    "longitude": 139.5112,
+    "is_depot": false
+  },
+  {
+    "name_english": "Nagaike",
+    "name_native": "長池",
+    "latitude": 34.8424,
+    "longitude": 135.79,
+    "is_depot": false
+  },
+  {
+    "name_english": "Naganuma",
+    "name_native": "長沼",
+    "latitude": 35.64263,
+    "longitude": 139.3659,
+    "is_depot": false
+  },
+  {
+    "name_english": "Nagoya",
+    "name_native": "名古屋",
+    "latitude": 35.1707722,
+    "longitude": 136.8816028,
+    "is_depot": false
+  },
+  {
+    "name_english": "Nakagawara",
+    "name_native": "中河原",
+    "latitude": 35.6597,
+    "longitude": 139.4576,
+    "is_depot": false
+  },
+  {
+    "name_english": "Nara",
+    "name_native": "奈良",
+    "latitude": 34.6806611,
+    "longitude": 135.8190222,
+    "is_depot": false
+  },
+  {
+    "name_english": "Narayama",
+    "name_native": "平城山",
+    "latitude": 34.710697,
+    "longitude": 135.810489,
+    "is_depot": false
+  },
+  {
+    "name_english": "Nippori",
+    "name_native": "日暮里",
+    "latitude": 35.727588,
+    "longitude": 139.770781,
+    "is_depot": false
+  },
+  {
+    "name_english": "Nishi-Nippori",
+    "name_native": "西日暮里",
+    "latitude": 35.731926,
+    "longitude": 139.7668,
+    "is_depot": false
+  },
+  {
+    "name_english": "Nishi-chōfu",
+    "name_native": "西調布",
+    "latitude": 35.657,
+    "longitude": 139.5302,
+    "is_depot": false
+  },
+  {
+    "name_english": "Odawara",
+    "name_native": "小田原",
+    "latitude": 35.25639,
+    "longitude": 139.155,
+    "is_depot": false
+  },
+  {
+    "name_english": "Okachimachi",
+    "name_native": "御徒町",
+    "latitude": 35.707327,
+    "longitude": 139.774847,
+    "is_depot": false
+  },
+  {
+    "name_english": "Roka-kōen",
+    "name_native": "芦花公園",
+    "latitude": 35.6704,
+    "longitude": 139.6081,
+    "is_depot": false
+  },
+  {
+    "name_english": "Rokujizō",
+    "name_native": "六地蔵",
+    "latitude": 34.93194,
+    "longitude": 135.79333,
+    "is_depot": false
+  },
+  {
+    "name_english": "Sakurajōsui",
+    "name_native": "桜上水",
+    "latitude": 35.667675,
+    "longitude": 139.6318694,
+    "is_depot": false
+  },
+  {
+    "name_english": "Sasazuka",
+    "name_native": "笹塚",
+    "latitude": 35.673746,
+    "longitude": 139.667264,
+    "is_depot": false
+  },
+  {
+    "name_english": "Seiseki-sakuragaoka",
+    "name_native": "聖蹟桜ヶ丘",
+    "latitude": 35.6507,
+    "longitude": 139.447,
+    "is_depot": false
+  },
+  {
+    "name_english": "Sengawa",
+    "name_native": "仙川",
+    "latitude": 35.6622,
+    "longitude": 139.5848,
+    "is_depot": false
+  },
+  {
+    "name_english": "Shibasaki",
+    "name_native": "柴崎",
+    "latitude": 35.6542389,
+    "longitude": 139.5671139,
+    "is_depot": false
+  },
+  {
+    "name_english": "Shibuya",
+    "name_native": "渋谷",
+    "latitude": 35.658514,
+    "longitude": 139.70133,
+    "is_depot": false
+  },
+  {
+    "name_english": "Shijō",
+    "name_native": "四条",
+    "latitude": 35.0025,
+    "longitude": 135.75972,
+    "is_depot": false
+  },
+  {
+    "name_english": "Shimbashi",
+    "name_native": "新橋",
+    "latitude": 35.666301,
+    "longitude": 139.758679,
+    "is_depot": false
+  },
+  {
+    "name_english": "Shimo-takaido",
+    "name_native": "下高井戸",
+    "latitude": 35.66611,
+    "longitude": 139.64139,
+    "is_depot": false
+  },
+  {
+    "name_english": "Shin-Fuji",
+    "name_native": "新富士",
+    "latitude": 35.142365,
+    "longitude": 138.663199,
+    "is_depot": false
+  },
+  {
+    "name_english": "Shin-Osaka",
+    "name_native": "新大阪",
+    "latitude": 34.7334833,
+    "longitude": 135.5001139,
+    "is_depot": false
+  },
+  {
+    "name_english": "Shin-Yokohama",
+    "name_native": "新横浜",
+    "latitude": 35.5075,
+    "longitude": 139.6175,
+    "is_depot": false
+  },
+  {
+    "name_english": "Shin-Ōkubo",
+    "name_native": "新大久保",
+    "latitude": 35.701063,
+    "longitude": 139.700228,
+    "is_depot": false
+  },
+  {
+    "name_english": "Shinagawa",
+    "name_native": "品川",
+    "latitude": 35.62861,
+    "longitude": 139.73917,
+    "is_depot": false
+  },
+  {
+    "name_english": "Shinden",
+    "name_native": "新田",
+    "latitude": 34.87417,
+    "longitude": 135.78056,
+    "is_depot": false
+  },
+  {
+    "name_english": "Shinjuku",
+    "name_native": "新宿",
+    "latitude": 35.68944,
+    "longitude": 139.70056,
+    "is_depot": false
+  },
+  {
+    "name_english": "Shizuoka",
+    "name_native": "静岡",
+    "latitude": 34.97167,
+    "longitude": 138.38889,
+    "is_depot": false
+  },
+  {
+    "name_english": "Sugamo",
+    "name_native": "巣鴨",
+    "latitude": 35.733345,
+    "longitude": 139.739496,
+    "is_depot": false
+  },
+  {
+    "name_english": "Tabata",
+    "name_native": "田端",
+    "latitude": 35.737909,
+    "longitude": 139.761254,
+    "is_depot": false
+  },
+  {
+    "name_english": "Takadanobaba",
+    "name_native": "高田馬場",
+    "latitude": 35.71278,
+    "longitude": 139.70389,
+    "is_depot": false
+  },
+  {
+    "name_english": "Takahatafudō",
+    "name_native": "高幡不動",
+    "latitude": 35.662102,
+    "longitude": 139.413391,
+    "is_depot": false
+  },
+  {
+    "name_english": "Takanawa Gateway",
+    "name_native": "高輪ゲートウェイ",
+    "latitude": 35.636389,
+    "longitude": 139.741389,
+    "is_depot": false
+  },
+  {
+    "name_english": "Takeda",
+    "name_native": "竹田",
+    "latitude": 34.9568944,
+    "longitude": 135.7561139,
+    "is_depot": false
+  },
+  {
+    "name_english": "Tama-reien",
+    "name_native": "多磨霊園",
+    "latitude": 35.66611,
+    "longitude": 139.503083,
+    "is_depot": false
+  },
+  {
+    "name_english": "Tamachi",
+    "name_native": "田町",
+    "latitude": 35.645605,
+    "longitude": 139.7477,
+    "is_depot": false
+  },
+  {
+    "name_english": "Tamamizu",
+    "name_native": "玉水",
+    "latitude": 34.800175,
+    "longitude": 135.806922,
+    "is_depot": false
+  },
+  {
+    "name_english": "Tanakura",
+    "name_native": "棚倉",
+    "latitude": 34.774708,
+    "longitude": 135.816183,
+    "is_depot": false
+  },
+  {
+    "name_english": "Tobitakyū",
+    "name_native": "飛田給",
+    "latitude": 35.660203,
+    "longitude": 139.523293,
+    "is_depot": false
+  },
+  {
+    "name_english": "Tokyo",
+    "name_native": "東京",
+    "latitude": 35.68083,
+    "longitude": 139.76694,
+    "is_depot": false
+  },
+  {
+    "name_english": "Toyohashi",
+    "name_native": "豊橋",
+    "latitude": 34.76278,
+    "longitude": 137.38167,
+    "is_depot": false
+  },
+  {
+    "name_english": "Tsutsujigaoka",
+    "name_native": "つつじヶ丘",
+    "latitude": 35.65806,
+    "longitude": 139.575,
+    "is_depot": false
+  },
+  {
+    "name_english": "Tōfukuji",
+    "name_native": "東福寺",
+    "latitude": 34.9812056,
+    "longitude": 135.7701806,
+    "is_depot": false
+  },
+  {
+    "name_english": "Ueno",
+    "name_native": "上野",
+    "latitude": 35.713434,
+    "longitude": 139.776725,
+    "is_depot": false
+  },
+  {
+    "name_english": "Uguisudani",
+    "name_native": "鶯谷",
+    "latitude": 35.722066,
+    "longitude": 139.777851,
+    "is_depot": false
+  },
+  {
+    "name_english": "Uji",
+    "name_native": "宇治",
+    "latitude": 34.8904028,
+    "longitude": 135.8006083,
+    "is_depot": false
+  },
+  {
+    "name_english": "Yamashiro-Aodani",
+    "name_native": "山城青谷",
+    "latitude": 34.828472,
+    "longitude": 135.799922,
+    "is_depot": false
+  },
+  {
+    "name_english": "Yamashiro-Taga",
+    "name_native": "山城多賀",
+    "latitude": 34.817875,
+    "longitude": 135.806044,
+    "is_depot": false
+  },
+  {
+    "name_english": "Yoyogi",
+    "name_native": "代々木",
+    "latitude": 35.683828,
+    "longitude": 139.70232,
+    "is_depot": false
+  },
+  {
+    "name_english": "Yūrakuchō",
+    "name_native": "有楽町",
+    "latitude": 35.674877,
+    "longitude": 139.763646,
+    "is_depot": false
+  },
+  {
+    "name_english": "Ōbaku",
+    "name_native": "黄檗",
+    "latitude": 34.9133,
+    "longitude": 135.8032,
+    "is_depot": false
+  },
+  {
+    "name_english": "Ōsaki",
+    "name_native": "大崎",
+    "latitude": 35.6197,
+    "longitude": 139.72855,
+    "is_depot": false
+  },
+  {
+    "name_english": "Ōtsuka",
+    "name_native": "大塚",
+    "latitude": 35.731438,
+    "longitude": 139.728692,
+    "is_depot": false
+  }
+]

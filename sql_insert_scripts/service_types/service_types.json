@@ -1,0 +1,81 @@
+[
+  {
+    "operator": "Toei Subway",
+    "types": [
+      {
+        "name_english": "Local",
+        "name_native": "普通"
+      },
+      {
+        "name_english": "Rapid",
+        "name_native": "快速"
+      }
+    ]
+  },
+  {
+    "operator": "Tokyo Metro",
+    "types": [
+      {
+        "name_english": "Local",
+        "name_native": "普通"
+      }
+    ]
+  },
+  {
+    "operator": "Keiō Corporation",
+    "types": [
+      {
+        "name_english": "Local",
+        "name_native": "各駅停車"
+      },
+      {
+        "name_english": "Semi Express",
+        "name_native": "区間急行"
+      }
+    ]
+  },
+  {
+    "operator": "JR East",
+    "types": [
+      {
+        "name_english": "Local",
+        "name_native": "普通"
+      }
+    ]
+  },
+  {
+    "operator": "JR West",
+    "types": [
+      {
+        "name_english": "Local",
+        "name_native": "普通"
+      }
+    ]
+  },
+  {
+    "operator": "JR Central",
+    "types": [
+      {
+        "name_english": "Hikari",
+        "name_native": "ひかり"
+      },
+      {
+        "name_english": "Kodama",
+        "name_native": "こダま"
+      }
+    ]
+  },
+  {
+    "operator": "Kyoto Municipal Transportation Bureau",
+    "types": [
+      {
+        "name_english": "Special Rapid",
+        "name_native": "特別急速"
+      },
+      {
+        "name_english": "Local",
+        "name_native": "普通"
+      }
+    ]
+  }
+]

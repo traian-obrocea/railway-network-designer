@@ -1,0 +1,44 @@
+[
+  {
+    "name_english": "JR East",
+    "name_native": "JR東日本",
+    "default_base_fare": 100,
+    "default_fare_per_km": 10
+  },
+  {
+    "name_english": "JR West",
+    "name_native": "JR西日本",
+    "default_base_fare": 120,
+    "default_fare_per_km": 8
+  },
+  {
+    "name_english": "JR Central",
+    "name_native": "JR東海",
+    "default_base_fare": 110,
+    "default_fare_per_km": 11
+  },
+  {
+    "name_english": "Kyoto Municipal Transportation Bureau",
+    "name_native": "京都市交通局",
+    "default_base_fare": 95,
+    "default_fare_per_km": 12
+  },
+  {
+    "name_english": "Keiō Corporation",
+    "name_native": "京王電鉄株式会社",
+    "default_base_fare": 160,
+    "default_fare_per_km": 18
+  },
+  {
+    "name_english": "Tokyo Metro",
+    "name_native": "東京メトロ",
+    "default_base_fare": 90,
+    "default_fare_per_km": 15
+  },
+  {
+    "name_english": "Toei Subway",
+    "name_native": "都営地下鉄",
+    "default_base_fare": 90,
+    "default_fare_per_km": 15
+  }
+]
